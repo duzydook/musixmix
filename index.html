@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Website Name</title>
+  <title>Music & Mix</title>
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <style>
     html, body{
         /* linear-gradient(135deg, #1a0033, #35006e, #32004b); */
-
+        position: relative;
         background: #1a0033;
         background: #e200b1;
         background-size: 400% 400%;
@@ -233,7 +234,7 @@
     }
 
     .about P {
-        font-size: 24px;
+        font-size: 22px;
     }
         @media (max-width: 640px) {
             .about P {
@@ -245,12 +246,6 @@
         background: white;
         color: black;
         min-width: 33%;
-    }
-
-    .howto {
-        background: white;
-        color: black;
-        min-height: 100px;
     }
 
     .copyright {
@@ -348,6 +343,123 @@
         }
     }
 
+    .modal-container {
+        display: none;
+        position: fixed;
+        left:0;
+        right:0;
+        top: 0;
+        overflow-x: 0;
+        overflow-y: scroll;
+        z-index: 6;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: 25%;
+        margin: auto;
+        padding: 20px 40px;
+        border-radius: 20px 20px 0 0;
+        text-align: center;
+        font-size: 1.2rem;
+        border: 2px solid #000;
+        box-shadow: 6px 6px 0 #000;
+        max-width: 900px;
+        background-color: white;
+        display: flex;
+        gap: 20px;
+    }
+
+        @media (max-width: 1024px) {
+            .modal {
+                max-width: calc(100% - 100px);
+                display: block;
+            }
+        }
+        
+
+    .contact {
+        background: white;
+        color: black;
+        min-height: 100px;
+        text-align: left;
+        width: 40%;
+    }
+
+        @media (max-width: 1024px) {
+            .contact {
+                width: 100%;
+            }
+        }
+
+        .contact .contact-item {
+            display: flex;
+            gap: 10px;
+        }
+
+        .contact .contact-item img {
+            width: 30px;
+        }
+
+    .howto {
+        background: white;
+        color: black;
+        min-height: 100px;
+        text-align: left;
+        width: 60%;
+        font-family: 'Courier New', Courier, monospace;
+    }
+        @media (max-width: 1024px) {
+            .howto {
+                width: 100%;
+            }
+        }
+
+    .cross {
+        position: absolute;
+        top:20px;
+        right: 20px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 1.2rem;
+        border: 2px solid #000;
+        box-shadow: 3px 3px 0 #000;
+        background-color: white;
+        width: 50px;
+        height: 50px;
+        z-index: 7;
+        cursor: pointer;
+    }
+
+        .cross::before,
+        .cross::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 2px;
+        height: 24px;
+        background-color: black;
+        transform-origin: center;
+        }
+
+        .cross::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .cross::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+    /* body {
+        overflow-y:hidden;
+    } */
   </style>
 </head>
 <body>
@@ -415,11 +527,112 @@
                 <p class="unit elza-light">per minute of music</p>
             </div>
         </div>
-        <div class="box box6 footer animated">🪄 Let's Talk ✨</div>
+        <div class="box box6 footer animated" id="talk">🪄 Let's Talk ✨</div>
         <!-- <div class="box box6 howto animated"></div> -->
         <div class="copyright">Music & Mix, 2025</div>
         <!-- https://www.nngroup.com/articles/neobrutalism/ -->
     </div>
 
+    <div class="modal-container" id="modal">
+        <div class="modal">
+            <div class="cross" id="close"></div>
+            <div class="contact">
+                <h3 class="recoleta-medium">Contact Us via:</h3>
+
+                <p class="contact-item abc-medium">
+                    <img src="img/instagram.png" alt="">
+                    <span>Instagram: @musixmix.com</span>
+                </p>
+
+                <p class="contact-item abc-medium">
+                    <img src="img/whatsapp.png" alt="">
+                    <span>Whatsapp: @musixmix.com</span>
+                </p>
+                
+                <p class="contact-item abc-medium">
+                    <img src="img/line.png" alt="">
+                    <span>LINE: @musixmix.com</span>
+                </p>
+
+                <p class="contact-item abc-medium">
+                    <img src="img/wechat.png" alt="">
+                    <span>WeChat: @musixmix.com</span>
+                </p>
+
+                <p class="contact-item abc-medium">
+                    <img src="img/telegram.png" alt="">
+                    <span>Telegram: @musixmix.com</span>
+                </p>
+
+                <p class="contact-item abc-medium">
+                    <img src="img/phone.png" alt="">
+                    <span>Phone: +66 62 295 6446</span>
+                </p>
+
+                <p class="contact-item abc-medium">
+                    <img src="img/internet.png" alt="">
+                    <span>Email: hello@musixmix.com</span>
+                </p>
+            </div>
+            <div class="howto">
+                <h3 class="recoleta-medium">How to?</h3>
+
+                <p>
+                    <strong>1. Get in Touch</strong><br />   
+                    <span class="abc-medium">Reach out to us through your preferred channel. Let’s talk and see if your request is possible.</span>
+                </p>
+
+                <p>
+                    <strong>2. Request a Quote</strong><br />      
+                    <span class="abc-medium">Pricing is flexible and tailored to your request. We'll provide a custom quote based on the scope.</span>
+                </p>
+                
+                <p>
+                    <strong>3. Project discussion</strong><br />      
+                    <span class="abc-medium">We’ll dive deeper into the details of the services you'd like to use, step by step.</span>
+                </p>
+
+                <p>
+                    <strong>4. Turnaround Time</strong><br />      
+                    <span class="abc-medium">
+                       
+
+                        Atmos Upmix: 3–5 days<br />
+
+                        Music Production: 2-4 weeks<br />
+
+                        Music Sheet Creation: 2–7 days<br />
+                    </span>
+                </p>
+
+                <p>
+                    <strong>5. Revisions and Final Delivery</strong><br />      
+                    <span class="abc-medium">We’ll send your files for review and make revisions if needed. Once approved, we’ll deliver the final files in the agreed formats. </span>
+                </p>
+
+                <p>
+                    <strong>6. Payment Terms</strong><br />      
+                    <span class="abc-medium">We require a 30% upfront deposit, with the remaining 70% due upon project completion. Payment is made credit card via Stripe — we’ll send you a secure payment link.</span>
+                    <br /><br />
+                    <span class="abc-medium">Additional revisions after final delivery are available at an extra 20% charge.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#talk').click(function() {
+                $('body').css('overflow-y', 'hidden');
+                $('#modal').css('overflow-y', 'auto');
+                $('#modal').fadeIn(400); 
+                
+            });
+            $('#close').click(function() {
+                $('body').css('overflow-y', 'auto');
+                $('#modal').css('overflow-y', 'hidden');
+                $('#modal').fadeOut(400); 
+            });
+        });
+    </script>
 </body>
 </html>
