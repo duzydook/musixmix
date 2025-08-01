@@ -627,10 +627,14 @@
                 $('#modal').fadeIn(400); 
                 
             });
-            $('#close').click(function() {
+            $('#close, #modal').click(function() {
                 $('body').css('overflow-y', 'auto');
                 $('#modal').css('overflow-y', 'hidden');
                 $('#modal').fadeOut(400); 
+            });
+
+            $('#modal>div').click(function(e) {
+                e.stopPropagation();
             });
         });
     </script>
