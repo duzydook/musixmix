@@ -65,7 +65,7 @@
         @media (max-width: 640px) {
             .container {
                 display: block;
-                max-width: calc(100% - 80px);
+                max-width: calc(100% - 40px);
             } 
         }
 
@@ -82,6 +82,11 @@
         @media (max-width: 1024px) {
             .box {
                 margin-bottom: 20px;
+            } 
+        }
+        @media (max-width: 640px) {
+            .box {
+                font-size: 18px;
             } 
         }
     
@@ -236,9 +241,16 @@
     .about P {
         font-size: 22px;
     }
+
+        @media (max-width: 640px) {
+            .about h2 {
+                font-size: 24px;
+            } 
+        }
+
         @media (max-width: 640px) {
             .about P {
-                font-size: 20px;
+                font-size: 18px;
             } 
         }
 
@@ -273,7 +285,7 @@
                 left: 0;
                 right: 0;
                 margin: auto;
-                width: calc(100% - 190px);
+                width: calc(100% - 130px);
                 max-width: 400px;
             } 
         }
@@ -395,6 +407,7 @@
         @media (max-width: 1024px) {
             .contact {
                 width: 100%;
+                font-size: 16px;
             }
         }
 
@@ -405,6 +418,9 @@
 
         .contact .contact-item img {
             width: 30px;
+            height: 30px;
+            min-width: 30px;
+            min-height: 30px;
         }
 
     .howto {
@@ -418,12 +434,13 @@
         @media (max-width: 1024px) {
             .howto {
                 width: 100%;
+                font-size: 16px;
             }
         }
 
     .cross {
         position: absolute;
-        top:20px;
+        top: 20px;
         right: 20px;
         border-radius: 8px;
         text-align: center;
@@ -455,6 +472,13 @@
 
         .cross::after {
         transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        @media (max-width: 640px) {
+            .cross {
+                width: 35px;
+                height: 35px;;
+            }
         }
 
     /* body {
